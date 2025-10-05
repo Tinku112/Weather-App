@@ -1,0 +1,190 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>My Weather App</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Weather App</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#about">About this App</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                            Cities
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#">Delhi</a></li>
+                            <li><a class="dropdown-item" href="#">London</a></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li><a class="dropdown-item" href="#">Bangalore</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#user-guide">Usage Guide</a>
+                    </li>
+                </ul>
+                <form class="d-flex" role="search">
+                    <input id="city" class="form-control me-2" type="search" placeholder="Search city"
+                        aria-label="Search" />
+                    <button class="btn btn-outline-success" type="submit" id="submit">Search</button>
+                </form>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <h1 class="my-4 text-center" id="cityName">Weather for Delhi</h1>
+        <div class="text-center mb-3">
+            <img id="weatherIcon" src="" alt="Weather Icon" style="width:100px; display:none;">
+        </div>
+        <main>
+            <div class="row row-cols-1 row-cols-md-3 mb-3 text-center">
+                <!-- Temperature -->
+                <div class="col">
+                    <div class="card h-100 mb-4 rounded-3 shadow-sm">
+                        <div class="card-header py-3">
+                            <h4 class="my-0 fw-normal">Temperature</h4>
+                        </div>
+                        <div class="card-body">
+                            <div>Temperature (°C): <span id="temperature_in_celsius"></span></div>
+                            <div>Temperature (°F): <span id="temperature_in_fahrenheit"></span></div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Wind & Feels Like -->
+                <div class="col">
+                    <div class="card h-100 mb-4 rounded-3 shadow-sm">
+                        <div class="card-header py-3">
+                            <h4 class="my-0 fw-normal">Wind & Feels Like</h4>
+                        </div>
+                        <div class="card-body">
+                            <div>Cloud: <span id="cloud"></span></div>
+                            <div>Wind (mph): <span id="wind_mph"></span></div>
+                            <div>Feels Like (°C): <span id="feelslike_c"></span></div>
+                            <div>Feels Like (°F): <span id="feelslike_f"></span></div>
+                            <div>Wind Direction: <span id="wind_dir"></span></div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Atmospheric Conditions -->
+                <div class="col">
+                    <div class="card h-100 mb-4 rounded-3 shadow-sm border-primary">
+                        <div class="card-header py-3 text-bg-primary border-primary">
+                            <h4 class="my-0 fw-normal">Atmospheric Conditions</h4>
+                        </div>
+                        <div class="card-body">
+                            <div>Condition: <span id="condition"></span></div>
+                            <div>Humidity: <span id="humidity"></span></div>
+                            <div>Precipitation: <span id="precip_mm"></span></div>
+                            <div>Visibility: <span id="visibility"></span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <h2 class="display-6 text-center mb-4">Weather of Other Common Places</h2>
+            <div class="table-responsive">
+                <table class="table text-center table-striped">
+                    <thead>
+                        <tr>
+                            <th>City</th>
+                            <th>Air Quality Index (PM2.5)</th>
+                            <th>Cloud(%)</th>
+                            <th>Temperature (°C)</th>
+                            <th>Temperature (°F)</th>
+                            <th>Wind (mph)</th>
+                            <th>Wind (kph)</th>
+                        </tr>
+                    </thead>
+                    <tbody id="commonPlaces"></tbody>
+                </table>
+            </div>
+        </main>
+    </div>
+
+    <div class="about container my-5" id="about">
+        <h2 class="text-center mb-4">About This App</h2>
+        <p class="lead text-center">
+            <strong>My Weather App</strong> is a dynamic and user-friendly web application that provides real-time
+            weather information
+            for cities around the world. Using the power of the WeatherAPI, this app delivers up-to-date details such
+            as:
+        </p>
+        <ul class="list-unstyled text-center">
+            <li>🌡️ Temperature in Celsius and Fahrenheit</li>
+            <li>💨 Wind speed and direction</li>
+            <li>💧 Humidity, visibility, and cloud cover</li>
+            <li>🌡️ Feels like temperature</li>
+            <li>☔ Precipitation levels</li>
+            <li>🌤️ Weather conditions with visual icons</li>
+        </ul>
+        <p class="text-center">
+            The app also features a <strong>search functionality</strong> and dropdown for common cities, making it easy
+            to check weather conditions anytime, anywhere.
+        </p>
+    </div>
+
+    <div id="user-guide" class="user-guide container my-5">
+        <h2 class="text-center mb-4">User Guide</h2>
+        <p class="lead text-center">
+            This guide will help you use <strong>My Weather App</strong> efficiently to check weather conditions for any
+            city:
+        </p>
+        <ul class="list-unstyled text-center">
+            <li>🔍 <strong>Search for a City:</strong> Type the city name in the search box and click the “Search”
+                button.</li>
+            <li>📋 <strong>Dropdown Menu:</strong> Quickly select popular cities from the “How To Use?” dropdown menu.
+            </li>
+            <li>🌤️ <strong>Weather Details:</strong> View temperature, wind, humidity, cloud coverage, visibility,
+                precipitation, and feels like temperature in the cards.</li>
+            <li>📊 <strong>Common Places Table:</strong> Scroll down to see live weather data for commonly searched
+                cities.</li>
+            <li>🖼️ <strong>Weather Icons:</strong> Visual representation of current weather is displayed next to the
+                city name.</li>
+        </ul>
+        <p class="text-center">
+            Enjoy exploring weather data from around the world in a simple, interactive way!
+        </p>
+    </div>
+
+    <footer class="bg-body-tertiary text-dark py-4 mt-5">
+        <div class="container text-center">
+            <p class="mb-1">&copy; 2025 My Weather App. All rights reserved.</p>
+            <p class="mb-0">
+                Developed by <strong>Tinku</strong> |
+                For Learning Purpose
+                <br>
+                <a href="https://www.linkedin.com/in/tinku-singh-webdev/" class="text-light text-decoration-none">LinkedIn </a>
+            </p>
+        </div>
+    </footer>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        crossorigin="anonymous"></script>
+    <script src="index.js"></script>
+</body>
+
+</html>
